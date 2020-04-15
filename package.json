@@ -23,11 +23,14 @@
     ]
   },
   "devDependencies": {
+    "@material-ui/core": "4.9.x",
     "react": "16.13.x",
     "react-dom": "16.13.x",
     "react-redux": "7.2.x",
     "react-scripts": "3.4.x",
     "redux": "4.0.x",
+    "redux-devtools-extension": "2.13.x",
+    "redux-saga": "1.1.x",
     "standard": "14.3.x"
   }
 }

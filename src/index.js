@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './style.css'
+import App from './app/app'
 
 ReactDOM.render(
   <React.StrictMode>
-    <div>初期テンプレート</div>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )
