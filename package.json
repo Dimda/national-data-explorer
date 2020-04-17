@@ -28,6 +28,7 @@
     "react-dom": "16.13.x",
     "react-redux": "7.2.x",
     "react-scripts": "3.4.x",
+    "recharts": "1.8.x",
     "redux": "4.0.x",
     "redux-devtools-extension": "2.13.x",
     "redux-saga": "1.1.x",

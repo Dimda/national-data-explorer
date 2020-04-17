@@ -11,8 +11,10 @@ export const fetchPrefectureNames = () => ({
 /**
  * 都道府県を選択する用のアクションクリエーター
  * @param {object} event チェックボックスのクリックにより発生するイベント
+ * @param {boolean} 人口データ取得の必要性
  */
-export const togglePrefecture = event => ({
+export const togglePrefecture = (prefCode, shouldFetchPopulation) => ({
   type: PREFECTURE_TOGGLED,
-  prefCode: event.target.name
+  prefCode,
+  shouldFetchPopulation
 })

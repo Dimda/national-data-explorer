@@ -2,13 +2,18 @@ import {
   FETCH_PREFECTURE_NAMES_PROCESSING,
   FETCH_PREFECTURE_NAMES_SUCCESS,
   FETCH_PREFECTURE_NAMES_FAILED,
-  PREFECTURE_TOGGLED
+  PREFECTURE_TOGGLED,
+  FETCH_PREFECTURE_POPULATION_PROCESSING,
+  FETCH_PREFECTURE_POPULATION_SUCCESS,
+  FETCH_PREFECTURE_POPULATION_FAILED
 } from 'store/types'
 
 const INITIAL_STATE = {
   prefectures: {},
   prefectureNameError: '',
-  prefectureNamesLoading: true
+  prefecturePopulationError: '',
+  prefectureNamesLoading: true,
+  prefecturePopulationLoading: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -46,10 +51,28 @@ export default (state = INITIAL_STATE, action) => {
       prefectures[action.prefCode].selected =
         !prefectures[action.prefCode].selected
 
+      return { ...state, prefectures }
+    }
+
+    case FETCH_PREFECTURE_POPULATION_PROCESSING:
+      return { ...state, prefecturePopulationLoading: true }
+
+    case FETCH_PREFECTURE_POPULATION_SUCCESS: {
+      const prefectures = { ...state.prefectures }
+      prefectures[action.prefCode].populationData = action.populationData
+
       return {
         ...state,
-        prefecture: prefectures
+        prefectures,
+        prefecturePopulationError: '',
+        prefecturePopulationLoading: false
       }
+    }
+
+    case FETCH_PREFECTURE_POPULATION_FAILED: return {
+      ...state,
+      prefecturePopulationError: action.error,
+      prefecturePopulationLoading: false
     }
 
     default:
