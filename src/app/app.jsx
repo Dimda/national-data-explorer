@@ -6,6 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 import reducers from 'store/reducers'
 import rootSaga from 'store/sagas'
 import DataExplorerContainer from 'app/dataExplorer/container'
+import './style.css'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
@@ -16,7 +17,10 @@ sagaMiddleware.run(rootSaga)
 
 const App = () => (
   <Provider store={store}>
-    <DataExplorerContainer />
+    <div className='app'>
+      <h1>日本地域情報</h1>
+      <DataExplorerContainer />
+    </div>
   </Provider>
 )
 

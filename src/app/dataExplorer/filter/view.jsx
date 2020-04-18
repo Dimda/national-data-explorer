@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormGroup, FormControlLabel, Checkbox } from '@material-ui/core'
+import { FormControlLabel, Checkbox } from '@material-ui/core'
 
 /**
  * チェックボックスの一覧。
@@ -8,11 +8,12 @@ import { FormGroup, FormControlLabel, Checkbox } from '@material-ui/core'
  * @param {() => object} クリックにより発動されるファンクション
  */
 export const Filter = ({ items, onChange }) => (
-  <FormGroup row>
+  <div className='filter'>
     {
       Object.entries(items).map(
         ([id, { selected, name }]) => (
           <FormControlLabel
+            className='filter-label'
             key={'filter-' + id}
             control={
               <Checkbox
@@ -27,5 +28,5 @@ export const Filter = ({ items, onChange }) => (
         )
       )
     }
-  </FormGroup>
+  </div>
 )

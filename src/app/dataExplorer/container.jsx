@@ -4,6 +4,8 @@ import {
   fetchPrefectureNames,
   togglePrefecture
 } from 'store/prefectureData/actions'
+import './style.css'
+import { Paper, CircularProgress } from '@material-ui/core'
 import { Filter } from './filter/view'
 import { Chart } from './chart/view'
 
@@ -29,6 +31,15 @@ const formatChartData = prefectures => {
       return values
     })
 }
+
+const DataExplorerWrapper = ({ children }) => (
+  <Paper className='data-explorer'>
+    <h2>都道府県</h2>
+    <div className='data-explorer-contents'>
+      {children}
+    </div>
+  </Paper>
+)
 
 /**
  * 都道府県のデータを調べる為のコンポーネント。
@@ -57,11 +68,15 @@ const DataExplorerContainer = ({
     fetchPrefectureNames()
   }, [fetchPrefectureNames])
 
-  if (prefectureNameError) return <div>{prefectureNameError}</div>
-  if (prefectureNamesLoading) return <div>ロード中</div>
+  if (prefectureNameError) {
+    return <DataExplorerWrapper>{prefectureNameError}</DataExplorerWrapper>
+  }
+  if (prefectureNamesLoading) {
+    return <DataExplorerWrapper><CircularProgress /></DataExplorerWrapper>
+  }
 
   return (
-    <div>
+    <DataExplorerWrapper>
       <Filter
         items={prefectures}
         onChange={(event) => {
@@ -77,10 +92,10 @@ const DataExplorerContainer = ({
             .map(({ name }) => name)
         }
         processing={prefecturePopulationLoading}
-        messageOnEmpty='都道府県を選んでください。'
+        messageOnEmpty='都道府県を選択してください。'
         error={prefecturePopulationError}
       />
-    </div>
+    </DataExplorerWrapper>
   )
 }
 

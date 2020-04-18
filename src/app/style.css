@@ -1,0 +1,15 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --main-color: #4051B5;
+}
+
+.app > h1 {
+  text-align: center;
+  flex: 0.05;
+  width: 100%;
+  background-color: var(--main-color);
+  color: #ffffff;
+  margin: 0;
+}
