@@ -12,7 +12,7 @@ const fetchNationalStatistics = async path => {
     fullUrl,
     {
       headers: {
-        'X-API-KEY': 'INSERT_API_KEY_HERE'
+        'X-API-KEY': process.env.REACT_APP_RESAS_API_KEY
       }
     }
   )
