@@ -1,8 +1,11 @@
 {
+  "homepage": "http://dimda.github.io/national-data-explorer",
   "name": "national-data-explorer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
@@ -24,6 +27,7 @@
   },
   "devDependencies": {
     "@material-ui/core": "4.9.x",
+    "gh-pages": "2.2.x",
     "react": "16.13.x",
     "react-dom": "16.13.x",
     "react-redux": "7.2.x",
