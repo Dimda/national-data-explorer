@@ -35,6 +35,12 @@ function * fetchPrefecturePopulation ({ prefCode, shouldFetchPopulation }) {
       populationData
     })
   } catch (e) {
+    // チェックボックスのマークを外す。
+    yield put({
+      type: PREFECTURE_TOGGLED,
+      prefCode,
+      shouldFetchPopulation: false
+    })
     yield put({
       type: FETCH_PREFECTURE_POPULATION_FAILED,
       error: 'データ取得に問題がありました。しばらくしてからもう一度お試しください。'
